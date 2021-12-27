@@ -1,37 +1,57 @@
 <template>
   <div id="app">
-    <aside>
-      <Profile />
-    </aside>
-    <main>
+    <Navbar />
+    <Profile />
+    <div class="content">
+      <AboutMe />
       <Courses />
-    </main>
+    </div>
   </div>
 </template>
 
 <script>
+import Navbar from "./components/Navbar.vue";
+import AboutMe from "./components/About.vue";
 import Courses from "./components/Courses.vue";
 import Profile from "./components/Profile.vue";
 
 export default {
   name: "App",
   components: {
+    Navbar,
+    AboutMe,
     Courses,
-    Profile
+    Profile,
   },
 };
 </script>
 
 <style>
-#app {
-  padding: 0px 50px;
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  grid-column-gap: 30px;
-  margin: 20px;
+* {
+  scroll-behavior: smooth;
+}
 
-  @media screen and (max-width: 600px) {
-    grid-template-columns: 1fr;
-  }
+#app {
+  display: grid;
+  margin: auto;
+  grid-gap: 30px;
+  grid-template-columns: 240px 1fr;
+  grid-template-areas: "navbar navbar" "profile content";
+  max-width: 1200px;
+}
+
+.content {
+  display: grid;
+  grid-gap: inherit;
+}
+
+.navbar {
+  grid-area: navbar;
+}
+.profile {
+  grid-area: profile;
+}
+.content {
+  grid-area: content;
 }
 </style>

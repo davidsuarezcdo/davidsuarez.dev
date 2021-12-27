@@ -1,31 +1,26 @@
 <template>
-  <div class="courses">
-    Cursos
-    <hr />
-    <table>
-      <thead>
-        <tr>
-          <th>#!</th>
-          <th>Carrera</th>
-          <th>Título</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <template v-for="item in items">
-          <tr v-if="validCourse(item)" :key="item.id">
-            <td><img :src="item.badge" alt="badge" /></td>
-            <td>{{ item.career }}</td>
-            <td>{{ item.title }}</td>
-            <td>
-              <a :href="item.diploma_link | diplomaLink" target="_blank">
-                Ver diploma
-              </a>
-            </td>
-          </tr>
+  <div>
+    <h3 id="courses">{{ $t("title.courses") }}</h3>
+    <b-card>
+      <b-table
+        small
+        no-border-collapse
+        striped
+        hover
+        :items="items"
+        :fields="fields"
+      >
+        <template #cell(badge)="item">
+          <img :src="item.value" alt="badge" />
         </template>
-      </tbody>
-    </table>
+
+        <template #cell(diploma_link)="item">
+          <a :href="item.value | diplomaLink" target="_blank">
+            <b-icon icon="eye"></b-icon>
+          </a>
+        </template>
+      </b-table>
+    </b-card>
   </div>
 </template>
 
@@ -39,6 +34,11 @@ interface iCourse {
   diploma_link: String;
 }
 
+interface iField {
+  key: keyof iCourse;
+  label: any;
+}
+
 import { Component, Vue } from "vue-property-decorator";
 import axios from "axios";
 @Component({
@@ -49,35 +49,52 @@ import axios from "axios";
   },
 })
 export default class Courses extends Vue {
-  private items: iCourse[] = [];
-  // id's de cursos a ignorar xd
+  fields: iField[] = [
+    {
+      key: "badge",
+      label: "",
+    },
+    {
+      key: "career",
+      label: this.$t("coursesTable.career"),
+    },
+    {
+      key: "title",
+      label: this.$t("coursesTable.course"),
+    },
+    {
+      key: "diploma_link",
+      label: this.$t("coursesTable.diploma"),
+    },
+  ];
 
+  items: iCourse[] = [];
+
+  // id's de cursos a ignorar xd
   private ignore: Number[] = [
     1859, // curso para lavarse las manos
   ];
 
   async mounted() {
-    let courses: iCourse[] = [];
     let key_stored: string = "platzi_courses";
-    let data_stored: any = localStorage.getItem(key_stored);
-    if (!data_stored) {
+    let courses: iCourse[] = JSON.parse(
+      localStorage.getItem(key_stored) as string
+    );
+    if (courses === null || courses?.length === 0) {
       let { data: response } = await axios.get(
         "https://platzi-user-api.jecsham.com/api/v1/getUserSummary/@david.suarez"
       );
 
-      data_stored = response;
-      courses = data_stored?.userData?.courses || [];
-
-      courses.sort((a, b) => {
-        if (a.career < b.career) return -1;
-        if (a.career > b.career) return 1;
-        return 0;
-      });
-
-      localStorage.setItem(key_stored, JSON.stringify(courses));
-    } else {
-      courses = JSON.parse(data_stored);
+      courses = ((response?.userData?.courses || []) as iCourse[])
+        .sort((a, b) => {
+          if (a.career < b.career) return -1;
+          if (a.career > b.career) return 1;
+          return 0;
+        })
+        .filter((course) => !this.ignore.includes(course.id));
     }
+
+    localStorage.setItem(key_stored, JSON.stringify(courses));
     this.items = courses;
   }
 
@@ -92,93 +109,7 @@ table img {
   width: 20px;
   max-height: 20px;
 }
-body {
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.25;
-}
-
 table {
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  table-layout: fixed;
-}
-
-table caption {
-  font-size: 1.5em;
-  margin: .5em 0 .75em;
-}
-
-table tr {
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  padding: .35em;
-}
-
-table {
-  
-}
-
-table th,
-table td {
-  /* padding: .625em; */
   text-align: center;
-}
-
-table th {
-  font-size: .85em;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-@media screen and (max-width: 600px) {
-  table {
-    border: 0;
-  }
-
-  table caption {
-    font-size: 1.3em;
-  }
-  
-  table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-  
-  table tr {
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: .625em;
-  }
-  
-  table td {
-    border-bottom: 1px solid #ddd;
-    display: block;
-    font-size: .8em;
-    text-align: right;
-  }
-  
-  table td::before {
-    /*
-    * aria-label has no advantage, it won't be read inside a table
-    content: attr(aria-label);
-    */
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-  table td:last-child {
-    border-bottom: 0;
-  }
 }
 </style>

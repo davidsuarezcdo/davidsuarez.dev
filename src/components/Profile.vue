@@ -1,13 +1,23 @@
 <template>
-  <div class="profile">
-    Perfil
-    <hr>
-    <div class="picture">
-      <img
-        src="https://avatars.githubusercontent.com/u/6282017?s=460&u=beb8ec447ce57f1b5036b2c22c232bde793a705e&v=4"
-        alt=""
-      />
-    </div>
+  <div class="profile" id="aboutme">
+    <b-card
+      title="David Suárez"
+      img-src="https://avatars.githubusercontent.com/u/6282017"
+      img-alt="profile"
+      img-top
+    >
+      <b-card-text>
+        Web fullstack developer
+      </b-card-text>
+
+      <b-list-group>
+        <b-list-group-item v-for="{ title, url, icon } in links" :key="icon">
+          <b-link :href="url" target="_blank">
+            <b-icon :icon="icon"></b-icon> {{ title }}
+          </b-link>
+        </b-list-group-item>
+      </b-list-group>
+    </b-card>
   </div>
 </template>
 
@@ -15,17 +25,33 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component({})
-export default class Profile extends Vue {}
+export default class Profile extends Vue {
+  links = [
+    {
+      icon: "mailbox",
+      url: "mailto:contact@davidsuarez.dev",
+      title: "Email",
+    },
+    {
+      icon: "github",
+      url: "https://github.com/dav1dsrz",
+      title: "Github",
+    },
+    {
+      icon: "linkedin",
+      url: "https://www.linkedin.com/in/davidsuarezcdo/",
+      title: "Linkedin",
+    },
+  ];
+}
 </script>
 
 <style scoped>
-.profile {
-  max-width: 100%;
+.list-group-item a {
+  text-decoration: none;
+  color: inherit;
 }
-.profile .picture img {
-  width: 100%;
-}
-.profile img {
-  object-fit: cover;
+.list-group-item svg {
+  margin-right: 10px;
 }
 </style>
