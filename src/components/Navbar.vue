@@ -45,6 +45,10 @@ export default class Navbar extends Vue {
 </script>
 
 <style scoped lang="scss">
+@font-face {
+  font-family: "True Lies";
+  src: url("../assets/fonts/truelies.woff");
+}
 .navbar {
   color: white !important;
   padding: 5px 25px;
@@ -54,7 +58,6 @@ export default class Navbar extends Vue {
   }
   .navbar-brand {
     font-family: "True Lies", Courier, "Lucida Console", monospace;
-    src: url("../assets/fonts/truelies.ttf");
   }
 }
 </style>
