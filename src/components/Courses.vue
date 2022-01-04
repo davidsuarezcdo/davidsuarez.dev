@@ -12,7 +12,7 @@
           </div>
         </template>
 
-        <b-table small no-border-collapse striped hover :items="items" :fields="fields">
+        <b-table small no-border-collapse striped hover :items="items" :fields="fields.filter(field => !field.hide)">
           <template #cell(badge)="item">
             <img :src="item.value" alt="badge" />
           </template>
@@ -41,8 +41,10 @@ interface iCourse {
 interface iField {
   key: keyof iCourse;
   label: any;
+  hide?: Boolean;
 }
 
+import Store from "../helpers/Store";
 import { Component, Vue } from "vue-property-decorator";
 import axios from "axios";
 @Component({
@@ -53,6 +55,7 @@ import axios from "axios";
   }
 })
 export default class Courses extends Vue {
+  hideMobile = window.matchMedia("(max-width: 700px)").matches;
   isLoandingCourses = true;
 
   fields: iField[] = [
@@ -62,7 +65,8 @@ export default class Courses extends Vue {
     },
     {
       key: "career",
-      label: this.$i18n.t("coursesTable.career")
+      label: this.$i18n.t("coursesTable.career"),
+      hide: this.hideMobile
     },
     {
       key: "title",
@@ -82,29 +86,21 @@ export default class Courses extends Vue {
   ];
 
   async mounted() {
-    let key_stored: string = "platzi_courses";
-    let courses: iCourse[] = JSON.parse(localStorage.getItem(key_stored) as string);
-    if (courses === null || courses?.length === 0) {
+    this.items = await Store("platzi_courses", 0, async () => {
       let { data: response } = await axios.get(
         "https://platzi-user-api.jecsham.com/api/v1/getUserSummary/@david.suarez"
       );
 
-      courses = ((response?.userData?.courses || []) as iCourse[])
+      return ((response?.userData?.courses || []) as iCourse[])
         .sort((a, b) => {
           if (a.career < b.career) return -1;
           if (a.career > b.career) return 1;
           return 0;
         })
-        .filter(course => this.validCourse(course));
-    }
+        .filter(course => !this.ignore.includes(course.id));
+    });
 
-    localStorage.setItem(key_stored, JSON.stringify(courses));
     this.isLoandingCourses = false;
-    this.items = courses;
-  }
-
-  validCourse(course: iCourse): boolean {
-    return !this.ignore.includes(course.id);
   }
 }
 </script>
