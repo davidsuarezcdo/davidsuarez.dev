@@ -1,23 +1,24 @@
 <template>
-  <b-card
-    id="aboutme"
-    title="David Suárez"
-    img-src="../assets/images/profile.png"
-    img-alt="profile"
-    img-top
-  >
-    <b-card-text>
-      Web fullstack developer<br />
-      México
-    </b-card-text>
-    <b-list-group>
-      <b-list-group-item v-for="{ title, url, icon } in links" :key="icon">
-        <b-link :href="url" target="_blank">
-          <b-icon :icon="icon"></b-icon> {{ title }}
+  <div id="aboutme">
+    <b-card img-src="../assets/images/profile.png" img-alt="profile" img-top>
+      <b-card-title>
+        David Suárez
+      </b-card-title>
+      <b-card-sub-title class="mb-2">
+        <font-awesome-icon icon="code" />
+        Web fullstack developer
+      </b-card-sub-title>
+
+      <b-list-group flush>
+        <b-link v-for="{ title, url, icon } in links" :key="title" :href="url" target="_blank">
+          <b-list-group-item>
+            <font-awesome-icon :icon="icon" />
+            {{ title }}
+          </b-list-group-item>
         </b-link>
-      </b-list-group-item>
-    </b-list-group>
-  </b-card>
+      </b-list-group>
+    </b-card>
+  </div>
 </template>
 
 <script lang="ts">
@@ -27,32 +28,44 @@ import { Component, Vue } from "vue-property-decorator";
 export default class Profile extends Vue {
   links = [
     {
-      icon: "mailbox",
+      icon: "envelope",
       url: "mailto:contact@davidsuarez.dev",
-      title: "Email",
+      title: "Email"
     },
     {
-      icon: "github",
+      icon: ["fab", "github-alt"],
       url: "https://github.com/dav1dsrz",
-      title: "Github",
+      title: "Github"
     },
     {
-      icon: "linkedin",
+      icon: ["fab", "linkedin-in"],
       url: "https://www.linkedin.com/in/davidsuarezcdo/",
-      title: "Linkedin",
+      title: "Linkedin"
     },
+    {
+      icon: ["fab", "steam"],
+      url: "https://steamcommunity.com/id/david_srz/",
+      title: "Steam"
+    },
+    {
+      icon: ["fab", "spotify"],
+      url: "https://open.spotify.com/user/12151888949",
+      title: "Spotify"
+    }
   ];
 }
 </script>
 
 <style scoped lang="scss">
-.list-group-item {
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  svg {
-    margin-right: 10px;
+#aboutme {
+  .list-group {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    svg {
+      margin-right: 10px;
+    }
   }
 }
 </style>
