@@ -7,9 +7,11 @@
     <b-card>
       <b-skeleton-wrapper :loading="isLoandingStats">
         <template #loading>
-          <div class="text-center">
-            <b-skeleton-img></b-skeleton-img>
-          </div>
+          <b-card>
+            <b-skeleton animation="wave" width="85%"></b-skeleton>
+            <b-skeleton animation="wave" width="55%"></b-skeleton>
+            <b-skeleton animation="wave" width="70%"></b-skeleton>
+          </b-card>
         </template>
 
         <b-list-group>
