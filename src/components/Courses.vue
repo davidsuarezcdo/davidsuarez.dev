@@ -6,12 +6,7 @@
     </h3>
     <b-card>
       <b-skeleton-wrapper :loading="isLoandingCourses">
-        <template #loading>
-          <div class="text-center">
-            <b-skeleton-table :rows="5" :columns="fields.length"></b-skeleton-table>
-          </div>
-        </template>
-
+        <template #loading><Skeleton :random_items="true"/></template>
         <b-table small no-border-collapse striped hover :items="items" :fields="fields.filter(field => !field.hide)">
           <template #cell(badge)="item">
             <img :src="item.value" alt="badge" />
@@ -29,6 +24,8 @@
 </template>
 
 <script lang="ts">
+import Skeleton from "./Skeleton.vue";
+
 interface iCourse {
   id: Number;
   title: String;
@@ -46,8 +43,10 @@ interface iField {
 
 import Store from "../helpers/Store";
 import { Component, Vue } from "vue-property-decorator";
-import axios from "axios";
 @Component({
+  components: {
+    Skeleton
+  },
   filters: {
     diplomaLink(link: string): string {
       return `https://platzi.com${link}`;
@@ -87,10 +86,7 @@ export default class Courses extends Vue {
 
   async mounted() {
     this.items = await Store("platzi_courses", 0, async () => {
-      let { data: response } = await axios.get(
-        "https://platzi-user-api.jecsham.com/api/v1/getUserSummary/@david.suarez"
-      );
-
+      let response = await require("../data/courses.json");
       return ((response?.userData?.courses || []) as iCourse[])
         .sort((a, b) => {
           if (a.career < b.career) return -1;
@@ -105,12 +101,14 @@ export default class Courses extends Vue {
 }
 </script>
 
-<style scoped>
-table img {
-  width: 20px;
-  max-height: 20px;
-}
-table {
-  text-align: center;
+<style lang="scss" scoped>
+#courses {
+  table img {
+    width: 20px;
+    max-height: 20px;
+  }
+  table {
+    text-align: center;
+  }
 }
 </style>

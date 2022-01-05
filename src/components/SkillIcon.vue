@@ -3,21 +3,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
-@Component({
-  props: {
-    icon: String
-  }
-})
+@Component
 export default class SkillIcon extends Vue {
+  @Prop({ type: String, required: true })
+  public icon!: string;
+
   getIcon(): string {
-    const svg = this.$props.icon.replace(/\./g, "").toLowerCase();
+    const svg = this.icon.replace(/\./g, "").toLowerCase();
     let type = "original";
     let plain = ["nestjs"];
-    if (plain.includes(svg)) {
-      type = "plain";
-    }
+    if (plain.includes(svg)) type = "plain";
     return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${svg}/${svg}-${type}.svg`;
   }
 }

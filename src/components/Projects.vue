@@ -23,10 +23,10 @@
         <div class="d-flex justify-content-between">
           <div>
             <template v-for="link of item.links">
-              <a :href="link.url" target="_blank" :key="link.url">
+              <b-link :href="link.url" target="_blank" :key="link.url">
                 <font-awesome-icon :icon="link.icon" />
                 {{ link.title }}
-              </a>
+              </b-link>
             </template>
           </div>
           <div class="project-technologies">
@@ -45,129 +45,31 @@ import SkillIcon from "./SkillIcon.vue";
 import { Component, Vue } from "vue-property-decorator";
 import { DateTime } from "luxon";
 
+interface iProject {
+  logo: string;
+  name: string;
+  role: string;
+  description: string;
+  years: string[];
+  technologies: string[];
+  links: {
+    url: string;
+    icon: string;
+    title: string;
+  }[];
+}
+
 @Component({
   components: {
     SkillIcon
   }
 })
 export default class Projects extends Vue {
-  public items = [
-    {
-      logo: "comparaonline.png",
-      name: "Compara Online",
-      role: "Backend software engineer",
-      description: `ComparaOnline is a technology company passionate about developing solutions to empower consumers by offering them a comprehensive and independent comparison tool for insurance and financial products.`,
-      years: ["Jan 2022"],
-      technologies: ["Typescript", "Nest.JS"],
-      links: [
-        {
-          url: "https://www.comparaonline.com/",
-          icon: "globe",
-          title: "Website"
-        },
-        {
-          url: "https://www.linkedin.com/company/compara/",
-          icon: ["fab", "linkedin-in"],
-          title: "LinkedIn"
-        },
-        {
-          url: "https://www.facebook.com/comparamexico",
-          icon: ["fab", "facebook"],
-          title: "Facebook"
-        }
-      ]
-    },
-    {
-      logo: "referencecheck.png",
-      name: "REFERENCECHECK MX",
-      role: "Web fullstack developer",
-      description: `The company offers to check the background of your possible clients, etc. My role help to developed a web system from scratch, it helped to replacement bunch of excel spreadsheets, automating tasks and implementing new workflows.`,
-      years: ["Jul 2016", "Jan 2022"],
-      technologies: [
-        "PHP",
-        "typescript",
-        "javascript",
-        "jquery",
-        "express",
-        "socket.io",
-        "node.js",
-        "mysql",
-        "redis",
-        "git",
-        "docker",
-        "composer",
-        "centos"
-      ],
-      links: [
-        {
-          url: "https://referencecheck.mx/",
-          icon: "globe",
-          title: "Website"
-        },
-        {
-          url: "https://www.linkedin.com/company/reference-check-mx/",
-          icon: ["fab", "linkedin-in"],
-          title: "LinkedIn"
-        },
-        {
-          url: "https://www.facebook.com/referencecheckmx",
-          icon: ["fab", "facebook"],
-          title: "Facebook"
-        }
-      ]
-    },
-    {
-      logo: "americasectorcoop.jpg",
-      name: "America Sector Coop",
-      role: "Software engineer",
-      description: `I created a comunnity for L4D2 players to play together in a custom server with a bunch of plugins from sourcemod and some writed for me.`,
-      years: ["Aug 2014", "Oct 2019"],
-      technologies: ["debian", "php", "mysql", "git", "docker", "composer", "wordpress"],
-      links: [
-        {
-          url: "https://americasectorcoop.com",
-          icon: "globe",
-          title: "Website"
-        },
-        {
-          url: "https://www.facebook.com/groups/americasectorcoop",
-          icon: ["fab", "facebook"],
-          title: "Facebook"
-        },
-        {
-          url: "https://github.com/americasectorcoop",
-          icon: ["fab", "github"],
-          title: "Github"
-        },
-        {
-          url: "https://steamcommunity.com/groups/americasectorcoop",
-          icon: ["fab", "steam"],
-          title: "Steam"
-        }
-      ]
-    },
-    {
-      logo: "tecred.png",
-      name: "TECRED",
-      role: "Web developer",
-      description: `Outsourcing company contracted by Kodak and The Government of Nuevo León. My Experience in Tecred: Developed a system module to visualize PDFs papers (notarias, oficialías). Coded with jQuery, php, bootstrap, Technical support, Database administration`,
-      years: ["Jun 2014", "Jul 2016"],
-      technologies: ["debian", "php", "mysql", "git", "wordpress", "bootstrap", "jquery"],
+  public items: iProject[] = [];
 
-      links: [
-        {
-          url: "https://www.tecred.com.mx/",
-          icon: "globe",
-          title: "Website"
-        },
-        {
-          url: "https://www.facebook.com/tecred.monterrey",
-          icon: ["fab", "facebook"],
-          title: "Facebook"
-        }
-      ]
-    }
-  ];
+  async mounted() {
+    this.items = await require("../data/projects.json");
+  }
 
   getImgUrl(image: string): string {
     const images = require.context("../assets/images/projects", false, /\.(png|jpe?g)$/);

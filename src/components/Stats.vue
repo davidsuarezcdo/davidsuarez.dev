@@ -7,11 +7,7 @@
     <b-card>
       <b-skeleton-wrapper :loading="isLoandingStats">
         <template #loading>
-          <b-card>
-            <b-skeleton animation="wave" width="85%"></b-skeleton>
-            <b-skeleton animation="wave" width="55%"></b-skeleton>
-            <b-skeleton animation="wave" width="70%"></b-skeleton>
-          </b-card>
+          <Skeleton :max_items="3" />
         </template>
 
         <b-list-group>
@@ -38,6 +34,7 @@
 import Store from "../helpers/Store";
 import SkillIcon from "./SkillIcon.vue";
 import fetchJsonp from "fetch-jsonp";
+import Skeleton from "./Skeleton.vue";
 import { DateTime } from "luxon";
 import { Component, Vue } from "vue-property-decorator";
 
@@ -76,7 +73,8 @@ interface iScoreTimeItem {
 
 @Component({
   components: {
-    SkillIcon
+    SkillIcon,
+    Skeleton
   }
 })
 export default class Stats extends Vue {
