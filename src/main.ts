@@ -6,8 +6,6 @@ import "./plugins/google_analytics";
 import App from "./App.vue";
 import i18n from "./plugins/i18n";
 
-import "../node_modules/devicon/devicon.min.css";
-
 Vue.config.productionTip = false;
 
 new Vue({
