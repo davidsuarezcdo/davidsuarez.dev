@@ -9,7 +9,6 @@ export default new VueI18n({
   messages: {
     en: {
       now: "Now",
-      years: "Years",
       language: "Language",
       title: {
         stats: "Stats",
@@ -33,7 +32,9 @@ export default new VueI18n({
       },
       aboutme: `I define myself by my enthusiasm for programming. At the age of 14, I began developing in a self-taught way by reading in forums, sites, etc. Over time, I improved my skills thanks to my job opportunities and courses online.`,
       hours: "hour | hours",
-      minutes: "minute | minutes"
+      minutes: "minute | minutes",
+      years: "year | years",
+      months: "month | months"
     },
     es: {
       now: "Presente",
@@ -60,7 +61,9 @@ export default new VueI18n({
       },
       aboutme: `Me defino a mi mismo como un entusiasta por la programación. A la edad de 14 años, comencé a desarrollar de forma autodidacta leyendo en foros, sitios, etc. Con el tiempo he mejorado mis habilidades gracias a mis oportunidades laborales y cursos en línea.`,
       hours: "hora | horas",
-      minutes: "minuto | minutos"
+      minutes: "minuto | minutos",
+      years: "año | años",
+      months: "mes | meses"
     }
   }
 });

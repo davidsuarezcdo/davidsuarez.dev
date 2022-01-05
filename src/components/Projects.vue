@@ -10,8 +10,8 @@
 
         <div class="d-flex justify-content-between">
           <div>
-            <h1>{{ item.name }}</h1>
-            <h2>{{ item.role }}</h2>
+            <h1 class="card-title">{{ item.name }}</h1>
+            <h2 class="card-subtitle mb-2 text-muted">{{ item.role }}</h2>
           </div>
           <small class="time-period">{{ timePeriod(item.years) }}</small>
         </div>
@@ -83,14 +83,22 @@ export default class Projects extends Vue {
     let months = Math.trunc(until.diff(from, "months").get("months"));
     let years = Math.trunc(until.diff(from, "years").get("years"));
 
-    let period = `${from.toFormat(format)} - ${until.toFormat(format)}`;
+    function formatDate(date: DateTime): string {
+      return date
+        .setLocale("es")
+        .setZone("America/Mexico_City")
+        .toFormat(format)
+        .capitalize();
+    }
+
+    let period = `${formatDate(from)} - ${formatDate(until)}`;
     if (until.toISODate() == DateTime.now().toISODate()) {
-      period = `${from.toFormat(format)} - ${this.$i18n.t("now")}`;
+      period = `${formatDate(from)} - ${this.$i18n.t("now")}`;
     }
     if (years > 0) {
-      return `${period} (${years} ${years > 1 ? "years" : "year"})`;
+      return `${period} (${years} ${this.$i18n.tc("years", years)})`;
     } else if (months > 0) {
-      return `${period} (${months} ${months > 1 ? "months" : "month"})`;
+      return `${period} (${months} ${this.$i18n.tc("months", months)})`;
     }
     return period;
   }
@@ -114,6 +122,7 @@ export default class Projects extends Vue {
       h2 {
         font-size: 1rem;
         margin-bottom: 0.5rem;
+        opacity: 0.9;
       }
       .project-logo {
         width: 100px;
@@ -121,6 +130,7 @@ export default class Projects extends Vue {
         float: left;
         padding: 0px 10px;
         margin-right: 10px;
+        border-radius: 2px;
       }
       .project-technologies {
         img {

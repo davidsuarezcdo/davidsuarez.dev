@@ -18,12 +18,6 @@ export default class Skeleton extends Vue {
   @Prop({ type: Boolean, default: false })
   public random_items!: boolean;
 
-  mounted() {
-    if (this.random_items) {
-      this.max_items = this.random(this.max_items, this.max_items * 2);
-    }
-  }
-
   random(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
