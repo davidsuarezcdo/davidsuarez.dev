@@ -80,10 +80,17 @@ interface iScoreTimeItem {
 export default class Stats extends Vue {
   isLoandingStats = true;
   hoursCoding = 0;
-  score_time: iScoreTime = {} as iScoreTime;
+  score_time: iScoreTime = {
+    hoursCoding: 0,
+    main_day: {
+      top_day: "",
+      hours: 0,
+      hints: 0
+    }
+  };
   topLanguage: string = "";
 
-  async mounted() {
+  async created() {
     this.score_time = await this.getScoreTime();
     this.topLanguage = await this.getTopLanguage();
     this.isLoandingStats = false;

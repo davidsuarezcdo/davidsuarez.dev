@@ -1,10 +1,14 @@
+function StoreKey(key: string) {
+  return `ds_${key.toLowerCase()}`;
+}
+
 function StoreSet(key: string, values: any, ttl = 0): any {
   let store = JSON.stringify({
     ttl: ttl > 0 ? +new Date() + ttl * 1000 : 0,
     values
   });
 
-  localStorage.setItem(key, store);
+  localStorage.setItem(StoreKey(key), store);
 }
 
 /**
@@ -15,7 +19,7 @@ function StoreSet(key: string, values: any, ttl = 0): any {
  * @returns Promise<any>
  */
 export default async function Store(key: string, _ttl: number, cb: CallableFunction): Promise<any> {
-  let store = localStorage.getItem(key) || "{}";
+  let store = localStorage.getItem(StoreKey(key)) || "{}";
   const { values = undefined, ttl = 0 } = JSON.parse(store);
 
   if ((ttl > 0 && ttl < Date.now()) || values === undefined) {
