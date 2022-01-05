@@ -14,20 +14,17 @@
 
         <b-list-group>
           <b-list-group-item>
-            <font-awesome-icon icon="rocket" />
-            {{ $t("stats.main_code") }}:
+            <font-awesome-icon icon="laptop-code" />
+            {{ $t("stats.main_code", { language: topLanguage }) }}
             <SkillIcon :icon="topLanguage" />
-            {{ topLanguage }}
           </b-list-group-item>
           <b-list-group-item>
-            <font-awesome-icon icon="code" />
-            {{ $t("stats.time_coding") }}: {{ score_time.hoursCoding }}
-            {{ score_time.hoursCoding === 1 ? "hour" : "hours" }}
+            <font-awesome-icon icon="hourglass-start" />
+            {{ $t("stats.time_coding", { hours: score_time.hoursCoding }) }}
           </b-list-group-item>
           <b-list-group-item>
             <font-awesome-icon icon="fire" />
-            {{ $t("stats.top_day_coding") }}: {{ score_time.mainDay.top_day }}, {{ score_time.mainDay.hours }}
-            {{ score_time.mainDay.hours === 1 ? "hour" : "hours" }} avg
+            {{ $t("stats.top_day_coding", { day: score_time.main_day.top_day, hours: score_time.main_day.hours }) }}
           </b-list-group-item>
         </b-list-group>
       </b-skeleton-wrapper>
@@ -50,7 +47,7 @@ interface iScoreLanguageItem {
 
 interface iScoreTime {
   hoursCoding: number;
-  mainDay: {
+  main_day: {
     top_day: string;
     hours: number;
     hints: number;
@@ -93,20 +90,23 @@ export default class Stats extends Vue {
   }
 
   getMainDay(score_time: iScoreTimeItem[]) {
-    const days = score_time.reduce(function(time1: any, time2: any) {
-      const value = time2.grand_total.total_seconds;
+    const days = score_time.reduce(function(days: any, time: any) {
+      const value = time.grand_total.total_seconds;
 
       if (value > 0) {
-        const date = DateTime.fromSQL(time2.range.date).toFormat("cccc");
+        const date = DateTime.fromSQL(time.range.date)
+          .setLocale("es-MX")
+          .setZone("America/Mexico_City")
+          .toFormat("cccc");
 
-        if (!(date in time1)) {
-          time1[date] = { value: 0, hints: 0 };
+        if (!(date in days)) {
+          days[date] = { value: 0, hints: 0 };
         }
-        time1[date].hints++;
-        time1[date].value += value;
+        days[date].hints++;
+        days[date].value += value;
       }
 
-      return time1;
+      return days;
     }, {});
 
     let [top_day] = Object.keys(days).sort((a, b) => days[b].value - days[a].value);
@@ -119,26 +119,23 @@ export default class Stats extends Vue {
   }
 
   async getTopLanguage(): Promise<string> {
-    const url = "https://wakatime.com/share/@davidsrz/f1b6ea31-b7a3-4b2d-9078-ea8eee2adf4b.json";
     return this.fetchFromWakatime(
-      url,
+      "f1b6ea31-b7a3-4b2d-9078-ea8eee2adf4b",
       (score_languages: iScoreLanguageItem[]) => score_languages.sort((a, b) => b.percent - a.percent)[0].name
     );
   }
 
   getScoreTime() {
-    const url = "https://wakatime.com/share/@davidsrz/9e6c1cf9-113f-4d94-b664-2b0e075ca2bc.json";
-    return this.fetchFromWakatime(url, (score_time: iScoreTimeItem[]) => {
-      return {
-        hoursCoding: Math.round(score_time.reduce((i, j) => i + j.grand_total.total_seconds, 0) / 60 / 60),
-        mainDay: this.getMainDay(score_time)
-      };
-    });
+    return this.fetchFromWakatime("9e6c1cf9-113f-4d94-b664-2b0e075ca2bc", (score_time: iScoreTimeItem[]) => ({
+      hoursCoding: Math.round(score_time.reduce((i, j) => i + j.grand_total.total_seconds, 0) / 60 / 60),
+      main_day: this.getMainDay(score_time)
+    }));
   }
 
-  fetchFromWakatime(url: string, parser?: CallableFunction) {
-    return Store(`wakatime_url:${url}`, 120, async () => {
-      let response = await fetchJsonp(url);
+  fetchFromWakatime(url_id: string, parser?: CallableFunction) {
+    const url_path = `https://wakatime.com/share/@davidsrz/${url_id}.json`;
+    return Store(`wakatime_url:${url_path}`, 120, async () => {
+      let response = await fetchJsonp(url_path);
       let { data } = await response.json();
       if (typeof parser == "function") {
         return parser(data);

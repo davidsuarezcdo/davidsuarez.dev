@@ -222,7 +222,8 @@ export default class Projects extends Vue {
       }
       .project-technologies {
         img {
-          opacity: 0.8;
+          cursor: help;
+          opacity: 0.5;
           margin: 0px 2px;
           &:hover {
             opacity: 1;
@@ -231,7 +232,7 @@ export default class Projects extends Vue {
       }
       a {
         text-decoration: none;
-        color: rgba(0, 0, 0, 0.8);
+        color: rgba(0, 0, 0, 0.5);
         padding-right: 10px;
         &:hover {
           color: rgba(0, 0, 0, 1);

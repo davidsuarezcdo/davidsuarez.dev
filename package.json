@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build && printf davidsuarez.dev>docs/CNAME",
     "lint": "vue-cli-service lint",
-    "reinstall": "rm -rf node_modules && rm yarn.lock && yarn"
+    "reinstall": "rm -rf node_modules && rm yarn.lock && yarn",
+    "release": "yarn build && git add . && git commit && git push origin main"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
