@@ -1,7 +1,7 @@
 <template>
   <div id="courses">
     <h3>
-      <font-awesome-icon icon="graduation-cap"></font-awesome-icon>
+      <font-awesome-icon icon="graduation-cap" />
       {{ $t("title.courses") }}
     </h3>
     <b-card>
@@ -12,9 +12,13 @@
             <img :src="item.value" alt="badge" />
           </template>
 
+          <template #cell(title)="item">
+            {{ item.value }}
+          </template>
+
           <template #cell(diploma_link)="item">
             <b-link :href="item.value | diplomaLink" target="_blank">
-              <b-icon icon="eye"></b-icon>
+              <font-awesome-icon icon="eye" />
             </b-link>
           </template>
         </b-table>
@@ -49,23 +53,18 @@ import { Component, Vue } from "vue-property-decorator";
   },
   filters: {
     diplomaLink(link: string): string {
+      if (link.startsWith("http")) return link;
       return `https://platzi.com${link}`;
     }
   }
 })
 export default class Courses extends Vue {
-  hideMobile = window.matchMedia("(max-width: 700px)").matches;
   isLoandingCourses = true;
 
   fields: iField[] = [
     {
       key: "badge",
       label: ""
-    },
-    {
-      key: "career",
-      label: this.$i18n.t("coursesTable.career"),
-      hide: this.hideMobile
     },
     {
       key: "title",
@@ -86,11 +85,11 @@ export default class Courses extends Vue {
 
   async mounted() {
     this.items = await Store("platzi_courses", 0, async () => {
-      let response = await require("../data/courses.json");
-      return ((response?.userData?.courses || []) as iCourse[])
+      let courses: iCourse[] = await require("../data/courses.json");
+      return courses
         .sort((a, b) => {
-          if (a.career < b.career) return -1;
-          if (a.career > b.career) return 1;
+          if (a.title < b.title) return -1;
+          if (a.title > b.title) return 1;
           return 0;
         })
         .filter(course => !this.ignore.includes(course.id));
@@ -106,9 +105,6 @@ export default class Courses extends Vue {
   table img {
     width: 20px;
     max-height: 20px;
-  }
-  table {
-    text-align: center;
   }
 }
 </style>

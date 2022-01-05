@@ -1,6 +1,5 @@
 import Vue from "vue";
 import "./plugins/fontawesome";
-import "./plugins/axios";
 import "./plugins/bootstrap";
 import "./plugins/google_analytics";
 import App from "./App.vue";

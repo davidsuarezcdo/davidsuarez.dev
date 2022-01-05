@@ -79,4 +79,7 @@ export default {
     }
   }
 }
+.table > :not(:first-child) {
+  border-top: none !important;
+}
 </style>

@@ -1,111 +1,93 @@
-{
-  "status": {
-    "error": false,
-    "code": 200
+[
+  {
+    "id": "udemy_1",
+    "title": "GIT+GitHub: Todo un sistema de control de versiones de cero",
+    "badge": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    "diploma_link": "https://www.udemy.com/certificate/UC-2WL9GCNF/"
   },
-  "userData": {
-    "careers": [],
-    "contributions": [],
-    "courses": [
-      {
-        "id": 1814,
-        "title": "Curso Básico de JavaScript",
-        "badge": "https://static.platzi.com/media/achievements/badge-basicojs-e2ead888-428e-4f55-962c-8894aeaeacda.png",
-        "url": "/clases/basico-javascript/",
-        "career": "Arquitectura Frontend",
-        "diploma_link": "/p/david.suarez/curso/1814-basico-javascript/diploma/detalle/"
-      },
-      {
-        "id": 1789,
-        "title": "Curso de Asincronismo con JavaScript",
-        "badge": "https://static.platzi.com/media/achievements/badge-asincronismo-javascript-3f44d51e-209e-4e47-a228-4142d049525c.png",
-        "url": "/clases/asincronismo-js/",
-        "career": "JavaScript",
-        "diploma_link": "/p/david.suarez/curso/1789-asincronismo-js/diploma/detalle/"
-      },
-      {
-        "id": 1815,
-        "title": "Curso de ECMAScript 6+",
-        "badge": "https://static.platzi.com/media/achievements/badge-ecmascript-6-d48e7bb7-a7a4-416d-a3b4-e11f0b13a229.png",
-        "url": "/clases/ecmascript-6/",
-        "career": "Backend con JavaScript",
-        "diploma_link": "/p/david.suarez/curso/1815-ecmascript-6/diploma/detalle/"
-      },
-      {
-        "id": 1650,
-        "title": "Curso de Prework: Buenas Prácticas y Entorno de Desarrollo en macOS 2019",
-        "badge": "https://static.platzi.com/media/achievements/badge-prework-configuracion-entorno-mac-9bda2d0a-b2d4-4762-b341-6aca8fbc8bb2.png",
-        "url": "/clases/prework-2019/",
-        "career": "JavaScript",
-        "diploma_link": "/p/david.suarez/curso/1650-prework-2019/diploma/detalle/"
-      },
-      {
-        "id": 2042,
-        "title": "Curso de Prework: Configuración de Entorno de Desarrollo en Windows",
-        "badge": "https://static.platzi.com/media/achievements/badge-prework-configuracion-entorno-windows-8b168efb-2001-4f5e-938f-a333861ab31d.png",
-        "url": "/clases/prework-windows/",
-        "career": null,
-        "diploma_link": "/p/david.suarez/curso/2042-prework-windows/diploma/detalle/"
-      },
-      {
-        "id": 1272,
-        "title": "Curso de SQL y MySQL",
-        "badge": "https://static.platzi.com/media/achievements/1272-15ff4836-0221-4001-b945-5cf34bd65bab.png",
-        "url": "/clases/sql-mysql/",
-        "career": "Desarrollo Backend con Ruby",
-        "diploma_link": "/p/david.suarez/curso/1272-sql-mysql/diploma/detalle/"
-      },
-      {
-        "id": 1050,
-        "title": "Curso Gratis de Programación Básica",
-        "badge": "https://static.platzi.com/media/achievements/1050-bfb74f83-8e2e-4ff7-a66d-77d2c0067908.png",
-        "url": "/clases/programacion-basica/",
-        "career": "Backend Profesional",
-        "diploma_link": "/p/david.suarez/curso/1050-programacion-basica/diploma/detalle/"
-      },
-      {
-        "id": 1859,
-        "title": "Curso para Lavarse las Manos Correctamente",
-        "badge": "https://static.platzi.com/media/achievements/badge-manos-final-1d5b2155-7bcc-4b6b-a2e2-e7dedcd13b81.png",
-        "url": "/clases/lavarse-manos-correctamente/",
-        "career": null,
-        "diploma_link": "/p/david.suarez/curso/1859-lavarse-manos-correctamente/diploma/detalle/"
-      },
-      {
-        "id": 1557,
-        "title": "Curso Profesional de Git y GitHub",
-        "badge": "https://static.platzi.com/media/achievements/badge-github-0b729570-934d-47d8-ba6b-610d7f15e0ec.png",
-        "url": "/clases/git-github/",
-        "career": "JavaScript",
-        "diploma_link": "/p/david.suarez/curso/1557-git-github/diploma/detalle/"
-      },
-      {
-        "id": 1642,
-        "title": "Curso Profesional de JavaScript",
-        "badge": "https://static.platzi.com/media/achievements/badge-profesional-javascript-13538df2-24ce-433f-9aa6-e34eed608e70.png",
-        "url": "/clases/javascript-profesional/",
-        "career": "JavaScript",
-        "diploma_link": "/p/david.suarez/curso/1642-javascript-profesional/diploma/detalle/"
-      },
-      {
-        "id": 1339,
-        "title": "Fundamentos de JavaScript",
-        "badge": "https://static.platzi.com/media/achievements/badge-fundamentos-javascript-61c15bdf-0a83-4aed-8537-b4753e4071e1.png",
-        "url": "/clases/fundamentos-javascript/",
-        "career": "JavaScript",
-        "diploma_link": "/p/david.suarez/curso/1339-fundamentos-javascript/diploma/detalle/"
-      }
-    ],
-    "socials": [],
-    "username": "david.suarez",
-    "answers": 2,
-    "avatar": "https://static.platzi.com/media/avatars/avatars/alejandro.suarez_543bcb22-eec9-4432-b44b-2f81de44b83d.jpg",
-    "description": "breaking timelines",
-    "flag": "https://static.platzi.com/media/flags/MX.png",
-    "last_update": "2021-03-12T19:00:12.725Z",
-    "name": "david.suarez",
-    "platzi_rank": "2.890",
-    "profile_url": "https://platzi.com/@david.suarez/",
-    "website": "https://alejandrosuarez.dev"
+  {
+    "id": "udemy_2",
+    "title": "Curso de Vue JS 2 en Español",
+    "badge": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+    "diploma_link": "https://www.udemy.com/certificate/UC-RT5E894R/"
+  },
+  {
+    "id": "udemy_3",
+    "title": "Desarrolla una API REST con AdonisJs 4",
+    "badge": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/adonisjs/adonisjs-original.svg",
+    "diploma_link": "https://www.udemy.com/certificate/UC-MP244VPR/"
+  },
+  {
+    "id": "udemy_4",
+    "title": "Iniciando con container en Docker",
+    "badge": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    "diploma_link": "https://www.udemy.com/certificate/UC-3f3e6917-9051-40e3-b905-b23aa031f861/"
+  },
+  {
+    "id": 1814,
+    "title": "Curso Básico de JavaScript",
+    "badge": "https://static.platzi.com/media/achievements/badge-basicojs-e2ead888-428e-4f55-962c-8894aeaeacda.png",
+    "diploma_link": "/p/david.suarez/curso/1814-basico-javascript/diploma/detalle/"
+  },
+  {
+    "id": 1789,
+    "title": "Curso de Asincronismo con JavaScript",
+    "badge": "https://static.platzi.com/media/achievements/badge-asincronismo-javascript-3f44d51e-209e-4e47-a228-4142d049525c.png",
+    "diploma_link": "/p/david.suarez/curso/1789-asincronismo-js/diploma/detalle/"
+  },
+  {
+    "id": 1815,
+    "title": "Curso de ECMAScript 6+",
+    "badge": "https://static.platzi.com/media/achievements/badge-ecmascript-6-d48e7bb7-a7a4-416d-a3b4-e11f0b13a229.png",
+    "diploma_link": "/p/david.suarez/curso/1815-ecmascript-6/diploma/detalle/"
+  },
+  {
+    "id": 1650,
+    "title": "Curso de Prework: Buenas Prácticas y Entorno de Desarrollo en macOS 2019",
+    "badge": "https://static.platzi.com/media/achievements/badge-prework-configuracion-entorno-mac-9bda2d0a-b2d4-4762-b341-6aca8fbc8bb2.png",
+    "diploma_link": "/p/david.suarez/curso/1650-prework-2019/diploma/detalle/"
+  },
+  {
+    "id": 2042,
+    "title": "Curso de Prework: Configuración de Entorno de Desarrollo en Windows",
+    "badge": "https://static.platzi.com/media/achievements/badge-prework-configuracion-entorno-windows-8b168efb-2001-4f5e-938f-a333861ab31d.png",
+    "diploma_link": "/p/david.suarez/curso/2042-prework-windows/diploma/detalle/"
+  },
+  {
+    "id": 1272,
+    "title": "Curso de SQL y MySQL",
+    "badge": "https://static.platzi.com/media/achievements/1272-15ff4836-0221-4001-b945-5cf34bd65bab.png",
+    "diploma_link": "/p/david.suarez/curso/1272-sql-mysql/diploma/detalle/"
+  },
+  {
+    "id": 1050,
+    "title": "Curso Gratis de Programación Básica",
+    "badge": "https://static.platzi.com/media/achievements/1050-bfb74f83-8e2e-4ff7-a66d-77d2c0067908.png",
+    "diploma_link": "/p/david.suarez/curso/1050-programacion-basica/diploma/detalle/"
+  },
+  {
+    "id": 1859,
+    "title": "Curso para Lavarse las Manos Correctamente",
+    "badge": "https://static.platzi.com/media/achievements/badge-manos-final-1d5b2155-7bcc-4b6b-a2e2-e7dedcd13b81.png",
+    "diploma_link": "/p/david.suarez/curso/1859-lavarse-manos-correctamente/diploma/detalle/"
+  },
+
+  {
+    "id": 1557,
+    "title": "Curso Profesional de Git y GitHub",
+    "badge": "https://static.platzi.com/media/achievements/badge-github-0b729570-934d-47d8-ba6b-610d7f15e0ec.png",
+    "diploma_link": "/p/david.suarez/curso/1557-git-github/diploma/detalle/"
+  },
+  {
+    "id": 1642,
+    "title": "Curso Profesional de JavaScript",
+    "badge": "https://static.platzi.com/media/achievements/badge-profesional-javascript-13538df2-24ce-433f-9aa6-e34eed608e70.png",
+    "diploma_link": "/p/david.suarez/curso/1642-javascript-profesional/diploma/detalle/"
+  },
+  {
+    "id": 1339,
+    "title": "Fundamentos de JavaScript",
+    "badge": "https://static.platzi.com/media/achievements/badge-fundamentos-javascript-61c15bdf-0a83-4aed-8537-b4753e4071e1.png",
+    "diploma_link": "/p/david.suarez/curso/1339-fundamentos-javascript/diploma/detalle/"
   }
-}
+]
