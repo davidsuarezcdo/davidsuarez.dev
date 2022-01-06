@@ -144,10 +144,11 @@ export default class Projects extends Vue {
       }
       a {
         text-decoration: none;
-        color: rgba(0, 0, 0, 0.5);
+        color: inherit;
+        opacity: 0.5;
         padding-right: 10px;
         &:hover {
-          color: rgba(0, 0, 0, 1);
+          opacity: 0.8;
         }
       }
       @media screen and (max-width: 768px) {

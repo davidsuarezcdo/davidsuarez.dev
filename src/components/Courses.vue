@@ -7,7 +7,7 @@
     <b-card>
       <b-skeleton-wrapper :loading="isLoandingCourses">
         <template #loading><Skeleton :random_items="true"/></template>
-        <b-table small no-border-collapse striped hover :items="items" :fields="fields.filter(field => !field.hide)">
+        <b-table small no-border-collapse :items="items" :fields="fields.filter(field => !field.hide)">
           <template #cell(badge)="item">
             <img :src="item.value" alt="badge" />
           </template>
