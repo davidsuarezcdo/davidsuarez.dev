@@ -128,7 +128,8 @@ export default class Stats extends Vue {
   async getTopLanguage(): Promise<string> {
     return this.fetchFromWakatime(
       "f1b6ea31-b7a3-4b2d-9078-ea8eee2adf4b",
-      (score_languages: iScoreLanguageItem[]) => score_languages.sort((a, b) => b.percent - a.percent)[0].name
+      (items: iScoreLanguageItem[]) =>
+        items.filter(i => i.name != "Other").sort((a, b) => b.percent - a.percent)[0].name
     );
   }
 

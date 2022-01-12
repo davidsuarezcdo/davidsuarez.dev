@@ -1,0 +1,41 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bs-primary-rgb: 55, 90, 127;
+    --bs-secondary-rgb: 68, 68, 68;
+    --bs-success-rgb: 0, 188, 140;
+    --bs-info-rgb: 52, 152, 219;
+    --bs-warning-rgb: 243, 156, 18;
+    --bs-danger-rgb: 231, 76, 60;
+    --bs-light-rgb: 173, 181, 189;
+    --bs-dark-rgb: 48, 48, 48;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-body-color-rgb: 255, 255, 255;
+    --bs-body-bg-rgb: 34, 34, 34;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    --bs-body-color: #fff;
+    --bs-body-bg: var(--bs-gray-900);
+  }
+
+  .table,
+  .card,
+  .list-group-item,
+  .dropdown-menu {
+    background-color: #25292c;
+    color: var(--bs-body-color) !important;
+  }
+  .table {
+    border: none !important;
+    border-color: var(--bs-gray-700) !important;
+  }
+  .navbar {
+    background-color: var(--bs-success) !important;
+  }
+
+  .dropdown-item {
+    color: var(--bs-body-color) !important;
+    &:hover {
+      background-color: var(--bs-gray-900) !important;
+    }
+  }
+}
