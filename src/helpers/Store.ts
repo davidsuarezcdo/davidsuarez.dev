@@ -33,3 +33,12 @@ export default async function Store(key: string, _ttl: number, cb: CallableFunct
 
   return values;
 }
+
+export function StorePurge() {
+  const prefix = StoreKey("");
+  for (let key in localStorage) {
+    if (!key.startsWith(prefix)) {
+      localStorage.removeItem(key);
+    }
+  }
+}
