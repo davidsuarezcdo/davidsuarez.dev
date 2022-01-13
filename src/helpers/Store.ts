@@ -1,5 +1,8 @@
+import VersionHash from "./VersionHash";
+
 function StoreKey(key: string) {
-  return `ds_${key.toLowerCase()}`;
+  const hash = VersionHash();
+  return `ds_${hash}_${key.toLowerCase()}`;
 }
 
 function StoreSet(key: string, values: any, ttl = 0): any {
