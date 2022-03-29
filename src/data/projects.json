@@ -5,7 +5,19 @@
     "role": "Backend software engineer",
     "description": "ComparaOnline is a technology company passionate about developing solutions to empower consumers by offering them a comprehensive and independent comparison tool for insurance and financial products.",
     "years": ["Jan 2022"],
-    "technologies": ["Typescript", "Nest.JS"],
+    "technologies": [
+      "Typescript",
+      "Nest.JS",
+      "Docker",
+      "kubernetes",
+      "ApacheKafka",
+      "PHP",
+      "git",
+      "postgresql",
+      "googlecloud",
+      "express",
+      "node.js"
+    ],
     "links": [
       {
         "url": "https://www.comparaonline.com/",

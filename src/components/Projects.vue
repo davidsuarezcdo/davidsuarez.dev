@@ -30,7 +30,7 @@
             </template>
           </div>
           <div class="project-technologies">
-            <template v-for="tech of item.technologies">
+            <template v-for="tech of item.technologies.sort()">
               <SkillIcon :icon="tech" :key="tech" :title="tech" />
             </template>
           </div>

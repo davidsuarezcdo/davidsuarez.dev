@@ -1,6 +1,6 @@
 <template>
   <div id="aboutme">
-    <b-card img-src="../assets/images/profile.png" img-alt="profile" img-top>
+    <b-card img-src="https://avatars.githubusercontent.com/u/6282017" img-alt="profile" img-top>
       <b-card-title>
         David Suárez
       </b-card-title>
@@ -34,7 +34,7 @@ export default class Profile extends Vue {
     },
     {
       icon: ["fab", "github-alt"],
-      url: "https://github.com/dav1dsrz",
+      url: "https://github.com/davidsuarezcdo",
       title: "Github"
     },
     {

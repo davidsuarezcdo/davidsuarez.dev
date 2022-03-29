@@ -1,13 +1,14 @@
 {
-  "name": "portafolio",
+  "name": "davidsuarez.dev",
   "version": "0.1.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && printf davidsuarez.dev>docs/CNAME",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "reinstall": "rm -rf node_modules && rm yarn.lock && yarn",
-    "release": "yarn build && git add . && git commit && git push origin main && git fetch --prune"
+    "release": "yarn build && git add . && git commit && git push origin main && git fetch --prune",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -26,6 +27,7 @@
     "vue-property-decorator": "^9.1.2"
   },
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "@intlify/vue-i18n-loader": "^4.1.0",
     "@types/luxon": "^2.0.8",
     "@types/webpack-env": "^1.16.3",
