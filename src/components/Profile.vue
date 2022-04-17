@@ -1,6 +1,6 @@
 <template>
   <div id="aboutme">
-    <b-card img-src="https://avatars.githubusercontent.com/u/6282017" img-alt="profile" img-top>
+    <b-card img-src="../assets/images/profile.jpg" img-alt="profile" img-top>
       <b-card-title>
         David Suárez
       </b-card-title>
