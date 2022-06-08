@@ -23,15 +23,15 @@
         <div class="d-flex justify-content-between">
           <div>
             <template v-for="link of item.links">
-              <b-link :href="link.url" target="_blank" :key="link.url">
+              <b-link :key="link.url" :href="link.url" target="_blank">
                 <font-awesome-icon :icon="link.icon" />
                 {{ link.title }}
               </b-link>
             </template>
           </div>
           <div class="project-technologies">
-            <template v-for="tech of item.technologies.sort()">
-              <SkillIcon :icon="tech" :key="tech" :title="tech" />
+            <template v-for="tech of item.technologies">
+              <SkillIcon :key="tech" :icon="tech" :title="tech" />
             </template>
           </div>
         </div>
