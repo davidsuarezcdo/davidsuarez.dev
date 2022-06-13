@@ -24,6 +24,12 @@
     "diploma_link": "https://www.udemy.com/certificate/UC-3f3e6917-9051-40e3-b905-b23aa031f861/"
   },
   {
+    "id": "udemy_5",
+    "title": "Patrones de Diseño en JavaScript y TypeScript",
+    "badge": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    "diploma_link": "https://www.udemy.com/certificate/UC-9d143785-e546-4168-bf05-9e9075526ce9/"
+  },
+  {
     "id": 1814,
     "title": "Curso Básico de JavaScript",
     "badge": "https://static.platzi.com/media/achievements/badge-basicojs-e2ead888-428e-4f55-962c-8894aeaeacda.png",
@@ -71,7 +77,6 @@
     "badge": "https://static.platzi.com/media/achievements/badge-manos-final-1d5b2155-7bcc-4b6b-a2e2-e7dedcd13b81.png",
     "diploma_link": "/p/david.suarez/curso/1859-lavarse-manos-correctamente/diploma/detalle/"
   },
-
   {
     "id": 1557,
     "title": "Curso Profesional de Git y GitHub",

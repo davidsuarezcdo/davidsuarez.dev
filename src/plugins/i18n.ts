@@ -28,7 +28,8 @@ export default new VueI18n({
       stats: {
         main_code: "My projects have been focused on {language}",
         time_coding: "This month I have spent a total of {hours} hours coding",
-        top_day_coding: "With {hours} hours on average, my favorite day to coding has been {day}"
+        top_day_coding: "With {hours} hours on average, my favorite day to coding has been {day}",
+        professional_years: "I have been worked professionally for {years} years"
       },
       aboutme: `I define myself by my enthusiasm for programming. At the age of 14, I began developing in a self-taught way by reading in forums, sites, etc. Over time, I improved my skills thanks to my job opportunities and courses online.`,
       hours: "hour | hours",
@@ -57,7 +58,8 @@ export default new VueI18n({
       stats: {
         main_code: "Mis proyectos han estado enfocados en {language}",
         time_coding: "Este més he dedicado un total de {hours} horas programando",
-        top_day_coding: "Con {hours} horas en promedio, mi día preferido para programar han sido los {day}"
+        top_day_coding: "Con {hours} horas en promedio, mi día preferido para programar han sido los {day}",
+        professional_years: "Profesionalmente me he desarrollado por {years} años"
       },
       aboutme: `Me defino a mi mismo como un entusiasta por la programación. A la edad de 14 años, comencé a desarrollar de forma autodidacta leyendo en foros, sitios, etc. Con el tiempo he mejorado mis habilidades gracias a mis oportunidades laborales y cursos en línea.`,
       hours: "hora | horas",

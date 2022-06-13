@@ -31,7 +31,7 @@
           </div>
           <div class="project-technologies">
             <template v-for="tech of item.technologies">
-              <SkillIcon :key="tech" :icon="tech" :title="tech" />
+              <SkillIcon :key="tech" :icon="tech" :title="tech.capitalize()" />
             </template>
           </div>
         </div>

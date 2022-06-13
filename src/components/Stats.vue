@@ -24,6 +24,10 @@
             <font-awesome-icon icon="fire" />
             {{ $t("stats.top_day_coding", { day: score_time.main_day.top_day, hours: score_time.main_day.hours }) }}
           </b-list-group-item>
+          <b-list-group-item>
+            <font-awesome-icon icon="rocket" />
+            {{ $t("stats.professional_years", { years: professional_years }) }}
+          </b-list-group-item>
         </b-list-group>
       </b-skeleton-wrapper>
     </b-card>
@@ -80,6 +84,7 @@ interface iScoreTimeItem {
 export default class Stats extends Vue {
   isLoandingStats = true;
   hoursCoding = 0;
+  professional_years = 0;
   score_time: iScoreTime = {
     hoursCoding: 0,
     main_day: {
@@ -93,7 +98,12 @@ export default class Stats extends Vue {
   async created() {
     this.score_time = await this.getScoreTime();
     this.topLanguage = await this.getTopLanguage();
+    this.professional_years = this.getProfessionalYears();
     this.isLoandingStats = false;
+  }
+
+  getProfessionalYears() {
+    return Math.round(DateTime.now().diff(DateTime.fromISO("2014-06-30"), ["year"]).years);
   }
 
   getMainDay(score_time: iScoreTimeItem[]) {
