@@ -1,5 +1,6 @@
 module.exports = {
   productionSourceMap: true,
+  lintOnSave: false,
   pluginOptions: {
     i18n: {
       locale: "en",
