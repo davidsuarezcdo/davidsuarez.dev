@@ -6,7 +6,7 @@
       </b-card-title>
       <b-card-sub-title class="mb-2">
         <font-awesome-icon icon="code" />
-        Web fullstack developer
+        Software Engineer
       </b-card-sub-title>
 
       <b-list-group flush>
