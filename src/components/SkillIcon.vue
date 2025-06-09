@@ -13,7 +13,7 @@ export default class SkillIcon extends Vue {
   getIcon(): string {
     const svg = this.icon.replace(/\./g, "").toLowerCase();
     let type = "original";
-    let plain = ["nestjs", "kubernetes"];
+    let plain = ["kubernetes"];
     if (plain.includes(svg)) type = "plain";
     return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${svg}/${svg}-${type}.svg`;
   }
