@@ -31,7 +31,7 @@
           </div>
           <div class="project-technologies">
             <template v-for="tech of item.technologies">
-              <SkillIcon :key="tech" :icon="tech" :title="tech.capitalize()" />
+              <SkillIcon :key="tech" :icon="tech" :title="capitalize(tech)" />
             </template>
           </div>
         </div>
@@ -44,6 +44,7 @@
 import SkillIcon from "./SkillIcon.vue";
 import { Component, Vue } from "vue-property-decorator";
 import { DateTime } from "luxon";
+import { capitalize } from "../helpers/capitalize";
 
 interface iProject {
   logo: string;
@@ -84,11 +85,11 @@ export default class Projects extends Vue {
     let years = Math.trunc(until.diff(from, "years").get("years"));
 
     function formatDate(date: DateTime): string {
-      return date
+      const result = date
         .setLocale("es")
         .setZone("America/Mexico_City")
-        .toFormat(format)
-        .capitalize();
+        .toFormat(format);
+      return capitalize(result);
     }
 
     let period = `${formatDate(from)} - ${formatDate(until)}`;
