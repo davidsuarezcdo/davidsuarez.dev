@@ -8,6 +8,7 @@
       <Projects />
       <Courses />
     </div>
+    <footer class="footer">DAVID ALEJANDRO SUAREZ CORONADO</footer>
   </div>
 </template>
 
@@ -39,7 +40,7 @@ export default {
   padding-bottom: 20px;
   grid-gap: 30px;
   grid-template-columns: 240px 1fr;
-  grid-template-areas: "navbar navbar" "profile content";
+  grid-template-areas: "navbar navbar" "profile content" "footer footer";
   max-width: 1200px;
   .content {
     display: grid;
@@ -55,6 +56,10 @@ export default {
   .content {
     grid-area: content;
   }
+  .footer {
+    grid-area: footer;
+    text-align: center;
+  }
 }
 @media (max-width: 1200px) {
   #app {
@@ -67,7 +72,7 @@ export default {
   #app {
     margin: 0px;
     grid-template-columns: 1fr;
-    grid-template-areas: "navbar" "profile" "content";
+    grid-template-areas: "navbar" "profile" "content" "footer";
     max-width: 100%;
     .navbar {
       .nav-item:not(.dropdown) {
